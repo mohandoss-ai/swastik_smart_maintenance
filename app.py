@@ -228,7 +228,7 @@ import plotly.express as px
 
 # Create a sample predictive dataset
 df["Predicted Next Service"] = pd.date_range("2025-10-10", periods=len(df), freq="10D")
-df["Risk Level"] = df["Condition"].map({
+df["Risk Level"] = df["status"].map({
     "Good": "Low",
     "Needs Service": "Medium",
     "Critical": "High"
