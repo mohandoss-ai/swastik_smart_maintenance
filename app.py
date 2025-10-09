@@ -7,18 +7,21 @@ import time
 import streamlit as st
 import time
 
-# --- Futuristic Splash Screen ---
-def futuristic_splash():
+import streamlit as st
+import time
+
+# --- Futuristic Green Splash Screen ---
+def futuristic_green_splash():
     st.markdown("""
         <style>
         .splash {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #001020, #000000);
+            background: linear-gradient(135deg, #a8e6a2, #57c556, #3b8d3b); /* pleasant green gradient */
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
-            color: #00ffff;
+            color: #FFFFFF;
             font-family: 'Courier New', monospace;
             z-index: 9999;
             animation: fadeOut 2s ease-in-out 6s forwards;
@@ -35,19 +38,20 @@ def futuristic_splash():
             background-image: url("https://i.postimg.cc/XX98G79w/logo.jpg");
             background-size: cover;
             background-position: center;
-            box-shadow: 0 0 40px #00ffff, 0 0 80px #0088ff inset;
+            box-shadow: 0 0 40px #00FF00, 0 0 80px #00FF00 inset; /* green glow */
             animation: pulse 1.5s infinite alternate;
         }
 
         @keyframes pulse {
-            from { box-shadow: 0 0 25px #00ffff; }
-            to { box-shadow: 0 0 60px #00ffff, 0 0 120px #0088ff inset; }
+            from { box-shadow: 0 0 25px #00FF00; }
+            to { box-shadow: 0 0 60px #00FF00, 0 0 120px #00FF00 inset; }
         }
 
         .boot-text {
             margin-top: 20px;
             text-align: center;
             font-size: 18px;
+            color: #FFFFFF; /* white text */
             opacity: 0;
             animation: appear 1s forwards;
         }
@@ -74,14 +78,7 @@ def futuristic_splash():
             <div class="boot-text">Initializing Swastik Smart Systems...</div>
             <div class="boot-text">Activating Predictive Engine...</div>
             <div class="boot-text">Loading Dashboard...</div>
-        </div>
-    """, unsafe_allow_html=True)
 
-    time.sleep(6)  # splash duration
-
-
-# --- Run Splash ---
-futuristic_splash()
 
 # --- Dashboard (with fade-in effect) ---
 st.markdown('<div class="fade-in">', unsafe_allow_html=True)
