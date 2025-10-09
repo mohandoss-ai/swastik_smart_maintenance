@@ -1,6 +1,25 @@
 import streamlit as st
 import time
 
+# --- Splash Screen ---
+st.markdown("""
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;
+                height: 100vh; background-color: #f0f2f6;">
+        <img src="https://i.imgur.com/n2b9H3t.png" width="150" style="margin-bottom: 20px;" />
+        <h1 style="font-family: 'Poppins', sans-serif; color: #333;">🚧 Swastik Smart Maintenance 🚧</h1>
+        <p style="color: gray;">AI-Powered Predictive Maintenance Dashboard</p>
+    </div>
+""", unsafe_allow_html=True)
+
+# --- Hold splash screen for 4 seconds ---
+time.sleep(4)
+
+# --- Clear the splash and move to main page ---
+st.empty()
+
+import streamlit as st
+import time
+
 # --- SPLASH SCREEN ---
 st.markdown("""
     <style>
