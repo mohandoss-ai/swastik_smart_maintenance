@@ -187,8 +187,20 @@ data = {
 
 df = pd.DataFrame(data)
 
-# --- Display Dashboard ---
-st.dataframe(df, use_container_width=True)
+# --- Display Dashboard with color highlights ---
+def highlight_status(val):
+    if "Critical" in val:
+        color = 'background-color: #ff4d4d; color: white;'  # Red for critical
+    elif "Due Soon" in val:
+        color = 'background-color: #ffd633;'  # Yellow for due soon
+    elif "Safe" in val:
+        color = 'background-color: #b3ffb3;'  # Green for safe
+    else:
+        color = ''
+    return color
+
+st.dataframe(df.style.applymap(highlight_status, subset=["Status"]), use_container_width=True)
+
 
 # --- AI Summary Section ---
 st.markdown("### 🤖 AI Insights")
