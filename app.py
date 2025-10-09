@@ -168,4 +168,36 @@ attention = status_counts.get("Needs Attention", 0)
 critical = status_counts.get("Critical", 0)
 
 st.info(f"✅ {healthy} Machines Healthy | ⚠️ {attention} Need Attention | 🚨 {critical} Critical Condition")
+import pandas as pd
+from datetime import datetime
+
+st.subheader("🔧 Swastik Service & Maintenance Dashboard")
+
+# --- Swastik-style Maintenance Data ---
+data = {
+    "Equipment Name": ["Crane A-01", "Crane B-02", "Forklift F-07", "BoomLift B-03", "Tower Crane T-10"],
+    "Equipment Type": ["Hydraulic Crane", "Tower Crane", "Forklift", "Boom Lift", "Tower Crane"],
+    "Last Service Date": ["2025-09-15", "2025-08-28", "2025-09-10", "2025-09-22", "2025-08-30"],
+    "Usage Hours": [410, 520, 280, 300, 600],
+    "Location": ["Chennai", "Coimbatore", "Madurai", "Trichy", "Salem"],
+    "Technician": ["Ramesh", "Arjun", "Siva", "Manoj", "Prakash"],
+    "Predicted Next Service": ["2025-10-30", "2025-10-10", "2025-11-02", "2025-11-15", "2025-10-05"],
+    "Status": ["⚠️ Due Soon", "❌ Critical", "✅ Safe", "✅ Safe", "⚠️ Due Soon"]
+}
+
+df = pd.DataFrame(data)
+
+# --- Display Dashboard ---
+st.dataframe(df, use_container_width=True)
+
+# --- AI Summary Section ---
+st.markdown("### 🤖 AI Insights")
+st.info(
+    """
+    - 1 machine (Crane B-02) is in **Critical** condition — requires immediate maintenance.
+    - 2 machines (Crane A-01, Tower Crane T-10) are **Due Soon**.
+    - System recommends scheduling their service within the next **7–10 days** to avoid downtime.
+    - Remaining equipment is in **Safe** operating condition.
+    """
+)
 
