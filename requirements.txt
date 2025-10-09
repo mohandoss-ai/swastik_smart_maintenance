@@ -6,4 +6,5 @@ plotly
 python-dateutil
 joblib
 matplotlib
+streamlit>=1.30.0
 
