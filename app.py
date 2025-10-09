@@ -6,9 +6,7 @@ import time
 import streamlit as st
 import time
 
-import streamlit as st
-import time
-
+# --- Futuristic Splash Screen ---
 def futuristic_splash():
     st.markdown("""
         <style>
@@ -24,20 +22,25 @@ def futuristic_splash():
             z-index: 9999;
             animation: fadeOut 2s ease-in-out 6s forwards;
         }
-        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
 
         .glow-logo {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             background-image: url("https://i.postimg.cc/XX98G79w/logo.jpg");
             background-size: cover;
-            box-shadow: 0 0 30px #00ffff, 0 0 60px #0088ff inset;
+            background-position: center;
+            box-shadow: 0 0 40px #00ffff, 0 0 80px #0088ff inset;
             animation: pulse 1.5s infinite alternate;
         }
+
         @keyframes pulse {
-            from { box-shadow: 0 0 20px #00ffff; }
-            to { box-shadow: 0 0 40px #00ffff, 0 0 80px #0088ff inset; }
+            from { box-shadow: 0 0 25px #00ffff; }
+            to { box-shadow: 0 0 60px #00ffff, 0 0 120px #0088ff inset; }
         }
 
         .boot-text {
@@ -53,6 +56,16 @@ def futuristic_splash():
         .boot-text:nth-child(4) { animation-delay: 3s; }
 
         @keyframes appear { to { opacity: 1; } }
+
+        /* FADE-IN DASHBOARD AFTER SPLASH */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         </style>
 
         <div class="splash">
@@ -63,13 +76,31 @@ def futuristic_splash():
         </div>
     """, unsafe_allow_html=True)
 
-    time.sleep(6)  # Duration before home screen shows
+    time.sleep(6)  # splash duration
 
 
-# Add a nice title and subtitle
+# --- Run Splash ---
+futuristic_splash()
+
+# --- Dashboard (with fade-in effect) ---
+st.markdown('<div class="fade-in">', unsafe_allow_html=True)
 st.title("🏗️ Swastik Smart Maintenance Dashboard")
-st.markdown("AI-Powered Predictive Maintenance & Equipment Monitoring")
-st.divider()
+st.markdown("""
+Welcome to **Swastik Smart Maintenance** —  
+Your intelligent predictive maintenance system powered by AI ⚙️  
+""")
+
+st.image("https://i.postimg.cc/XX98G79w/logo.jpg", width=180)
+
+st.markdown("""
+### 💡 Quick Actions
+- 📊 View Equipment Analytics  
+- 🧠 Check AI Maintenance Predictions  
+- ⚙️ Manage Equipment Status  
+- 📅 Upcoming Service Schedules  
+""")
+
+st.markdown("</div>", unsafe_allow_html=True)
 
 
 import streamlit as st
