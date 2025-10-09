@@ -37,3 +37,39 @@ fig = px.scatter(df, x="Machine_Age", y="Hours_Used", color="Equipment_Type", si
 st.plotly_chart(fig, use_container_width=True)
 
 st.success("✅ Dashboard loaded successfully!")
+# -----------------------------------------------------------
+# 🧠 Predictive Maintenance (AI Section)
+# -----------------------------------------------------------
+
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+
+st.write("### 🤖 Predictive Maintenance Insights")
+
+# Prepare data for model
+X = df[['Hours_Used', 'Machine_Age']]
+y = df['Issue_Flag']
+
+# Split into train/test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Train a simple AI model
+model = RandomForestClassifier(random_state=42)
+model.fit(X_train, y_train)
+
+# Predict probability of issues
+df['Maintenance_Risk'] = model.predict_proba(X)[:, 1]
+
+# Display predictions
+st.write("#### Predicted Maintenance Risk Levels")
+st.dataframe(df[['Equipment_ID', 'Equipment_Type', 'Hours_Used', 'Machine_Age', 'Maintenance_Risk']])
+
+# Highlight high-risk equipment
+high_risk = df[df['Maintenance_Risk'] > 0.6]
+if not high_risk.empty:
+    st.warning("⚠️ Machines that may require immediate maintenance:")
+    st.table(high_risk[['Equipment_ID', 'Equipment_Type', 'Maintenance_Risk']])
+else:
+    st.success("✅ All equipment is in good condition for now.")
+
