@@ -265,7 +265,17 @@ else:
     critical_count = safe_count = 0
 
 due_soon_count = sum(df['Status'].astype(str).str.contains('Due Soon', case=False, na=False))
-avg_service_date = pd.to_datetime(df['Last Service Date'], errors='coerce').max().strftime("%Y-%m-%d")
+# --- Safe handling for Last Service Date ---
+if 'Last Service Date' in df.columns:
+    avg_service_date = pd.to_datetime(df['Last Service Date'], errors='coerce').max()
+    if pd.notnull(avg_service_date):
+        avg_service_date = avg_service_date.strftime("%Y-%m-%d")
+    else:
+        avg_service_date = "No valid date found"
+else:
+    avg_service_date = "Column not found"
+
+st.info(f"🗓️ Latest Recorded Service Date: **{avg_service_date}**")
 
 
 # --- AI Insights Section ---
