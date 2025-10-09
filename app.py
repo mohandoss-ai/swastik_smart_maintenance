@@ -204,28 +204,44 @@ st.dataframe(df.style.applymap(highlight_status, subset=["Status"]), use_contain
 
 # --- AI Summary Section ---
 st.markdown("### 🤖 AI Insights")
-st.info(
-    """
-    - 1 machine (Crane B-02) is in **Critical** condition — requires immediate maintenance.
-    - 2 machines (Crane A-01, Tower Crane T-10) are **Due Soon**.
-    - System recommends scheduling their service within the next **7–10 days** to avoid downtime.
-    - Remaining equipment is in **Safe** operating condition.
-    """
-)
-# --- Predictive Maintenance Visualization ---
-st.markdown("### 📅 Predicted Next Service Timeline")
+import matplotlib.pyplot as plt
+import numpy as np
 
-# Convert date strings to datetime for plotting
-df["Predicted Next Service"] = pd.to_datetime(df["Predicted Next Service"])
+st.markdown("### 📊 AI Predicted Maintenance Timeline (Upgraded Chart)")
 
-# Sort by date
+# Sort by next service date
 df_sorted = df.sort_values("Predicted Next Service")
 
-# Plot
-fig, ax = plt.subplots()
-ax.barh(df_sorted["Equipment Name"], df_sorted["Usage Hours"])
-ax.set_xlabel("Usage Hours (before next service)")
-ax.set_ylabel("Equipment")
-ax.set_title("Upcoming Maintenance Schedule (Predicted by AI)")
+# Set up the figure
+fig, ax = plt.subplots(figsize=(8, 4))
+
+# Define colors based on status
+colors = df_sorted["Status"].map({
+    "✅ Safe": "#00cc66",       # green
+    "⚠️ Due Soon": "#ffcc00",   # yellow
+    "❌ Critical": "#ff4d4d"    # red
+}).fillna("#999999")
+
+# Create modern bar chart
+bars = ax.bar(df_sorted["Equipment Name"], df_sorted["Usage Hours"], color=colors)
+
+# Add labels and formatting
+ax.set_title("Predicted Next Service — AI Insights", fontsize=14, weight='bold')
+ax.set_xlabel("Equipment Name")
+ax.set_ylabel("Usage Hours (Before Next Service)")
+ax.set_xticklabels(df_sorted["Equipment Name"], rotation=30, ha='right')
+
+# Add values on top of bars
+for bar in bars:
+    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 5,
+            int(bar.get_height()), ha='center', va='bottom', fontsize=9)
+
 st.pyplot(fig)
+
+# Add mini AI legend
+st.markdown("""
+🟢 **Safe Equipment** — Recently serviced  
+🟡 **Due Soon** — Plan maintenance soon  
+🔴 **Critical** — Immediate service required  
+""")
 
