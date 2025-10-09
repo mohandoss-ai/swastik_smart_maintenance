@@ -262,19 +262,6 @@ else:
 
 due_soon_count = sum(df['Status'].astype(str).str.contains('Due Soon', case=False, na=False))
 
-# Automatically detect a date column with 'service' and 'date' in its name
-date_col = next((col for col in df.columns if 'service' in col.lower() and 'date' in col.lower()), None)
-
-if date_col:
-    avg_service_date = pd.to_datetime(df[date_col], errors='coerce').max()
-    if pd.notnull(avg_service_date):
-        avg_service_date = avg_service_date.strftime("%Y-%m-%d")
-    else:
-        avg_service_date = "No valid date found"
-else:
-    avg_service_date = "Column not found"
-
-st.info(f"🗓️ Latest Recorded Service Date: **{avg_service_date}**")
 
 
 
