@@ -198,19 +198,48 @@ data = {
 df = pd.DataFrame(data)
 
 
-# --- Display Dashboard with color highlights ---
-def highlight_status(val):
-    if "Critical" in val:
-        color = 'background-color: #ff4d4d; color: white;'  # Red for critical
-    elif "Due Soon" in val:
-        color = 'background-color: #ffd633;'  # Yellow for due soon
-    elif "Safe" in val:
-        color = 'background-color: #b3ffb3;'  # Green for safe
-    else:
-        color = ''
-    return color
+# --- Modern AI Predicted Maintenance Chart ---
+st.subheader("📊 AI Predicted Maintenance Timeline (Upgraded Chart)")
 
-st.dataframe(df.style.applymap(highlight_status, subset=["Status"]), use_container_width=True)
+import plotly.express as px
+
+# Sample enhanced chart with dynamic color mapping
+risk_color_map = {
+    "Safe": "#00CC96",     # Green
+    "Due Soon": "#FFA600", # Orange
+    "Critical": "#EF553B"  # Red
+}
+
+chart_df = df.copy()
+chart_df["Predicted Next Service"] = pd.to_datetime(chart_df["Predicted Next Service"], errors='coerce')
+
+fig = px.bar(
+    chart_df,
+    x="Equipment Name",
+    y="Predicted Next Service",
+    color="Status",
+    text="Status",
+    color_discrete_map=risk_color_map,
+    hover_data=["Location", "Technician", "Usage Hours"],
+    title="📆 AI-Based Upcoming Maintenance Schedule",
+)
+
+fig.update_traces(
+    textposition="outside",
+    marker_line_width=1.5,
+    marker_line_color="black"
+)
+fig.update_layout(
+    plot_bgcolor="#f9f9f9",
+    paper_bgcolor="white",
+    title_font=dict(size=20, color="#2E4053"),
+    xaxis_title="Equipment",
+    yaxis_title="Predicted Service Date",
+    margin=dict(t=60, b=60),
+    height=500
+)
+
+st.plotly_chart(fig, use_container_width=True)
 
 
 # --- AI Summary Section ---
