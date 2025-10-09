@@ -18,8 +18,7 @@ import pandas as pd
 import plotly.express as px
 from datetime import datetime
 
-# ✅ Debug line to confirm version
-st.write("✅ Running updated version - v246 lines")
+
 # Page setup
 st.set_page_config(page_title="Swastik Smart Maintenance", layout="wide")
 
