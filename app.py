@@ -6,81 +6,68 @@ import time
 import streamlit as st
 import time
 
-# --- Futuristic Splash Screen ---
-def futuristic_splash():
+# --- FUTURISTIC GREEN THEME ---
+def set_green_style():
     st.markdown("""
         <style>
-        .splash {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #001020, #000000);
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            color: #00ffff;
-            font-family: 'Courier New', monospace;
-            z-index: 9999;
-            animation: fadeOut 2s ease-in-out 6s forwards;
+        /* Background color */
+        .stApp {
+            background: linear-gradient(135deg, #0f4d0f, #1a6f1a, #0a3a0a);
+            color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
         }
 
-        @keyframes fadeOut {
-            to { opacity: 0; visibility: hidden; }
+        /* Header styling */
+        h1, h2, h3, h4 {
+            color: #FFFFFF;
+            text-shadow: 0px 0px 10px #00FF00AA;
         }
 
-        .glow-logo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background-image: url("https://i.postimg.cc/XX98G79w/logo.jpg");
-            background-size: cover;
-            background-position: center;
-            box-shadow: 0 0 40px #00ffff, 0 0 80px #0088ff inset;
-            animation: pulse 1.5s infinite alternate;
+        /* Info cards */
+        .stMetric, .stMarkdown, .stDataFrame {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.2);
         }
 
-        @keyframes pulse {
-            from { box-shadow: 0 0 25px #00ffff; }
-            to { box-shadow: 0 0 60px #00ffff, 0 0 120px #0088ff inset; }
+        /* Buttons */
+        div.stButton > button {
+            background-color: #00FF00;
+            color: #FFFFFF;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0px 0px 20px #00FF0080;
+            transition: 0.3s;
         }
 
-        .boot-text {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 18px;
-            opacity: 0;
-            animation: appear 1s forwards;
+        div.stButton > button:hover {
+            background-color: #32FF32;
+            color: black;
+            transform: scale(1.05);
         }
 
-        .boot-text:nth-child(2) { animation-delay: 1s; }
-        .boot-text:nth-child(3) { animation-delay: 2s; }
-        .boot-text:nth-child(4) { animation-delay: 3s; }
-
-        @keyframes appear { to { opacity: 1; } }
-
-        /* FADE-IN DASHBOARD AFTER SPLASH */
-        .fade-in {
-            animation: fadeIn 1.5s ease-in;
+        /* Sidebar */
+        section[data-testid="stSidebar"] {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid rgba(255,255,255,0.2);
         }
 
+        /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        div[data-testid="stHorizontalBlock"] {
+            animation: fadeIn 1s ease-in-out;
         }
         </style>
-
-        <div class="splash">
-            <div class="glow-logo"></div>
-            <div class="boot-text">Initializing Swastik Smart Systems...</div>
-            <div class="boot-text">Activating Predictive Engine...</div>
-            <div class="boot-text">Loading Dashboard...</div>
-        </div>
     """, unsafe_allow_html=True)
 
-    time.sleep(6)  # splash duration
-
-
-# --- Run Splash ---
-futuristic_splash()
+set_green_style()
 
 
 # --- Dashboard (with fade-in effect) ---
