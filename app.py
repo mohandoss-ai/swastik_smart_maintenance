@@ -81,6 +81,75 @@ def futuristic_splash():
 
 # --- Run Splash ---
 futuristic_splash()
+# --- FUTURISTIC UI STYLING ---
+def set_futuristic_style():
+    st.markdown("""
+        <style>
+        /* Background gradient */
+        .stApp {
+            background: linear-gradient(135deg, #0a0f24, #1b2735, #090a0f);
+            color: #E0E0E0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header styling */
+        h1, h2, h3, h4 {
+            color: #00FFFF;
+            text-shadow: 0px 0px 15px #00FFFF88;
+        }
+
+        /* Info cards */
+        .stMetric, .stMarkdown, .stDataFrame {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+        }
+
+        /* Buttons */
+        div.stButton > button {
+            background-color: #00FFFF;
+            color: #0A0F24;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0px 0px 20px #00FFFF80;
+            transition: 0.3s;
+        }
+
+        div.stButton > button:hover {
+            background-color: #14FFEC;
+            color: black;
+            transform: scale(1.05);
+        }
+
+        /* Sidebar */
+        section[data-testid="stSidebar"] {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Tables */
+        .stDataFrame {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        div[data-testid="stHorizontalBlock"] {
+            animation: fadeIn 1s ease-in-out;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+# Call this style function at the top of your dashboard
+set_futuristic_style()
 
 # --- Dashboard (with fade-in effect) ---
 st.markdown('<div class="fade-in">', unsafe_allow_html=True)
