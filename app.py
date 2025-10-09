@@ -26,7 +26,7 @@ st.set_page_config(page_title="Swastik Smart Maintenance", layout="wide")
 data_path = "data/equipment.csv"
 df = pd.read_csv(data_path)
 
-# Convert Last_Service_Date to datetime
+# Convert Last Service Date to datetime
 df['Last Service Date'] = pd.to_datetime(df['Last Service Date'], errors='coerce')
 
 
@@ -262,17 +262,20 @@ else:
 
 due_soon_count = sum(df['Status'].astype(str).str.contains('Due Soon', case=False, na=False))
 
-# --- Safe handling for Last Service Date ---
-if 'Last Service Date' in df.columns:
-    avg_service_date = pd.to_datetime(df['Last Service Date'], errors='coerce').max()
+# Automatically detect a date column with 'service' and 'date' in its name
+date_col = next((col for col in df.columns if 'service' in col.lower() and 'date' in col.lower()), None)
+
+if date_col:
+    avg_service_date = pd.to_datetime(df[date_col], errors='coerce').max()
     if pd.notnull(avg_service_date):
-        avg_service_date = avg_service_date.strftime("%Y-%m-%d")  # ✅ fixed
+        avg_service_date = avg_service_date.strftime("%Y-%m-%d")
     else:
         avg_service_date = "No valid date found"
 else:
     avg_service_date = "Column not found"
 
 st.info(f"🗓️ Latest Recorded Service Date: **{avg_service_date}**")
+
 
 
 
