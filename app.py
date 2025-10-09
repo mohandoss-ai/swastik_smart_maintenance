@@ -262,17 +262,6 @@ fig = px.scatter(
 st.plotly_chart(fig, use_container_width=True)
 
 
-fig.update_layout(
-    plot_bgcolor="#f8f9fa",
-    paper_bgcolor="#f8f9fa",
-    font=dict(color="#333", size=13),
-    title_font=dict(size=18, color="#0d6efd", family="Arial Black"),
-    xaxis_title="Equipment",
-    yaxis_title="Predicted Next Service Date",
-)
-
-st.plotly_chart(fig, use_container_width=True)
-
 
 
 
