@@ -87,6 +87,18 @@ st.markdown("""
 - 📅 Upcoming Service Schedules  
 """)
 st.markdown("</div>", unsafe_allow_html=True)
+def main_app():
+    # Sidebar title
+    st.sidebar.title("Navigation")
+
+    # Sidebar radio buttons for pages
+    page = st.sidebar.radio("Go to", [
+        "Home",
+        "Dashboard",
+        "AI Insights",
+        "Maintenance Logs",
+        "Settings"
+    ])
 
 
 import streamlit as st
