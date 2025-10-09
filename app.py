@@ -102,30 +102,34 @@ st.markdown("""
 """)
 
 st.markdown("</div>", unsafe_allow_html=True)
-# --- FUTURISTIC UI STYLING ---
 def set_futuristic_style():
     st.markdown("""
         <style>
         /* Background gradient */
         .stApp {
             background: linear-gradient(135deg, #0a0f24, #1b2735, #090a0f);
-            color: #E0E0E0;
+            color: #F0F0F0; /* Brighter text */
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Header styling */
+        /* Headings */
         h1, h2, h3, h4 {
             color: #00FFFF;
-            text-shadow: 0px 0px 15px #00FFFF88;
+            text-shadow: 0px 0px 12px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Paragraphs and small text */
+        p, div, span {
+            color: #EAEAEA !important; /* Ensure readability */
         }
 
         /* Info cards */
         .stMetric, .stMarkdown, .stDataFrame {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
             border-radius: 15px;
             padding: 15px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+            color: #F5F5F5;
         }
 
         /* Buttons */
@@ -146,15 +150,10 @@ def set_futuristic_style():
 
         /* Sidebar */
         section[data-testid="stSidebar"] {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.12);
             backdrop-filter: blur(12px);
             border-right: 1px solid rgba(255,255,255,0.2);
-        }
-
-        /* Tables */
-        .stDataFrame {
-            border-radius: 10px;
-            overflow: hidden;
+            color: #E0E0E0;
         }
 
         /* Animations */
@@ -168,9 +167,6 @@ def set_futuristic_style():
         }
         </style>
     """, unsafe_allow_html=True)
-
-# Call this style function at the top of your dashboard
-set_futuristic_style()
 
 
 import streamlit as st
