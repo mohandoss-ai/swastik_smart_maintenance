@@ -1,10 +1,5 @@
 import streamlit as st
 import time
-
-
-
-
-
 st.markdown("<h1 style='text-align:center;'>🏠 Swastik Smart Maintenance Dashboard</h1>", unsafe_allow_html=True)
 st.write("Welcome to the Swastik Smart Maintenance system — your AI-powered assistant for predictive maintenance.")
 
