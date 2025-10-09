@@ -28,15 +28,6 @@ st.divider()
 import streamlit as st
 
 
-# --- PAGE HEADER ---
-st.markdown("""
-# 🏗️ Swastik Smart Maintenance Dashboard
-**AI-Powered Predictive Maintenance & Equipment Monitoring**  
-*Ensuring uptime, safety, and performance — every day.*
-""")
-
-st.markdown("---")
-
 # --- App Header with Logo ---
 st.image("swastik_logo.png", width=120)
 
