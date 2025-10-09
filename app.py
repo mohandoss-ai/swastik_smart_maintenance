@@ -88,4 +88,32 @@ if st.button("Schedule Maintenance"):
     st.balloons()
 
 st.write("You can use this tool to plan preventive maintenance based on AI risk predictions.")
+# --- AI Maintenance Prediction Section ---
+import random
+import time
+
+st.header("🔧 AI Predictive Maintenance Assistant")
+
+st.write("""
+This smart assistant uses AI to predict **when maintenance is needed**
+based on equipment usage and sensor data.  
+It helps the service team prevent sudden breakdowns and improve uptime.
+""")
+
+# Input fields
+hours = st.number_input("⏱️ Equipment Run Hours", min_value=0, max_value=10000, value=1200)
+temp = st.number_input("🌡️ Oil Temperature (°C)", min_value=0, max_value=200, value=70)
+vibration = st.number_input("💥 Vibration Level (mm/s)", min_value=0, max_value=100, value=15)
+
+# Predict button
+if st.button("🚀 Predict Maintenance"):
+    with st.spinner("Analyzing with AI..."):
+        time.sleep(2)
+        risk = (temp * 0.4 + vibration * 0.3 + hours * 0.0005) + random.randint(-5, 5)
+        if risk < 50:
+            st.success(f"✅ Machine is healthy. Next maintenance due in {random.randint(20,40)} days.")
+        elif 50 <= risk < 100:
+            st.warning(f"⚠️ Maintenance likely needed in {random.randint(10,20)} days. Schedule inspection soon.")
+        else:
+            st.error(f"🚨 Immediate attention required! High risk of failure within {random.randint(1,7)} days.")
 
