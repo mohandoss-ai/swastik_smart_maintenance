@@ -3,8 +3,6 @@ from PIL import Image
 import streamlit as st
 import time
 
-import streamlit as st
-import time
 
 # --- SPLASH SCREEN WITH GREEN THEME ---
 import streamlit as st
