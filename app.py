@@ -28,7 +28,8 @@ data_path = "data/equipment.csv"
 df = pd.read_csv(data_path)
 
 # Convert Last Service Date to datetime
-df['Last Service Date'] = pd.to_datetime(df['Last Service Date'], errors='coerce')
+df['Last_Service_Date'] = pd.to_datetime(df['Last_Service_Date'], errors='coerce')
+
 
 
 st.write("### Equipment Maintenance Data")
