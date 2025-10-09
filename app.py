@@ -1,4 +1,31 @@
 import streamlit as st
+from PIL import Image
+
+st.set_page_config(page_title="Swastik Smart Maintenance", page_icon="🏗️", layout="wide")
+
+# Add custom page style
+st.markdown(
+    """
+    <style>
+    .main {
+        background-color: #F9FAFB;
+        padding: 2rem;
+    }
+    h1 {
+        color: #1E3A8A;
+        font-weight: 800;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Add a nice title and subtitle
+st.title("🏗️ Swastik Smart Maintenance Dashboard")
+st.markdown("AI-Powered Predictive Maintenance & Equipment Monitoring")
+st.divider()
+
+import streamlit as st
 
 
 # --- PAGE HEADER ---
