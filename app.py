@@ -1,35 +1,45 @@
 import streamlit as st
 from PIL import Image
+import streamlit as st
+import time
 
-st.set_page_config(page_title="Swastik Smart Maintenance", page_icon="🏗️", layout="wide")
+# --- SPLASH SCREEN (TOP + AUTO HIDE) ---
+splash_html = """
+    <div id="splash" style="
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: #f4f6fa;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        z-index: 9999;
+        animation: fadeOut 1s ease-in-out 3s forwards;
+    ">
+        <img src="https://i.postimg.cc/XX98G79w/logo.jpg" width="140" style="margin-bottom: 20px;">
+        <h1 style="font-family: 'Poppins', sans-serif; color: #222;">🚧 Swastik Smart Maintenance 🚧</h1>
+        <p style="color: #555;">AI-Powered Predictive Maintenance Dashboard</p>
+    </div>
 
-# Add custom page style
-st.markdown(
-    """
     <style>
-    .main {
-        background-color: #F9FAFB;
-        padding: 2rem;
-    }
-    h1 {
-        color: #1E3A8A;
-        font-weight: 800;
-    }
+        @keyframes fadeOut {
+            from {opacity: 1;}
+            to {opacity: 0; visibility: hidden;}
+        }
     </style>
-    """,
-    unsafe_allow_html=True
-)
+"""
+
+st.markdown(splash_html, unsafe_allow_html=True)
+time.sleep(4)
+# --- END SPLASH SCREEN ---
+
+
+
 
 # Add a nice title and subtitle
 st.title("🏗️ Swastik Smart Maintenance Dashboard")
 st.markdown("AI-Powered Predictive Maintenance & Equipment Monitoring")
 st.divider()
 
-import streamlit as st
-
-
-# --- App Header with Logo ---
-st.image("swastik_logo.png", width=120)
 
 import streamlit as st
 import pandas as pd
@@ -37,28 +47,6 @@ import plotly.express as px
 from datetime import datetime
 import time
 
-# --- SPLASH SCREEN SECTION ---
-splash_html = f"""
-    <div id="splash" style="
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        height: 100vh; background-color: #f4f6fa; animation: fadeOut 1s ease-in-out 3s forwards;">
-        <img src="https://i.postimg.cc/XX98G79w/logo.jpg" width="120" style="margin-bottom: 20px;">
-        <h1 style="font-family: 'Poppins', sans-serif; color: #222;">🚧 Swastik Smart Maintenance 🚧</h1>
-        <p style="color: #555;">AI-Powered Predictive Maintenance Dashboard</p>
-    </div>
-
-    <style>
-        @keyframes fadeOut {{
-            from {{opacity: 1;}}
-            to {{opacity: 0; display: none; visibility: hidden;}}
-        }}
-    </style>
-"""
-
-st.markdown(splash_html, unsafe_allow_html=True)
-time.sleep(4)
-st.empty()
-# --- END SPLASH SCREEN SECTION ---
 
 
 # Page setup
