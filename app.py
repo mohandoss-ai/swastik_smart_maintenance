@@ -360,14 +360,13 @@ fig = px.scatter(
     df,
     x="Usage Hours",
     y="Predicted Next Service",
-    color="Status",
+    color="Status",  # changed here ✅
     size="Usage Hours",
     hover_name="Equipment Name",
     title="🤖 AI-Driven Maintenance Prediction",
 )
 
 st.plotly_chart(fig, use_container_width=True)
-
 
 
 
