@@ -31,6 +31,18 @@ df['Last_Service_Date'] = pd.to_datetime(df['Last_Service_Date'], errors='coerce
 
 st.write("### Equipment Maintenance Data")
 st.dataframe(df)
+# --- 📥 Download Equipment Data Section ---
+st.subheader("📥 Download Equipment Data Section")
+
+csv = df.to_csv(index=False).encode('utf-8')
+st.download_button(
+    label="⬇️ Download Equipment Data (CSV)",
+    data=csv,
+    file_name="equipment_maintenance_data.csv",
+    mime="text/csv",
+    key="download_csv"
+)
+
 
 # Maintenance Insights
 st.write("### 📊 Maintenance Summary")
@@ -184,15 +196,7 @@ data = {
 }
 
 df = pd.DataFrame(data)
-# --- Download Data Button ---
-csv = df.to_csv(index=False).encode('utf-8')
-st.markdown("### 📥 Download Equipment Data")
-st.download_button(
-    label="📥 Download Equipment Data (CSV)",
-    data=csv,
-    file_name="equipment_maintenance_data.csv",
-    mime="text/csv"
-)
+
 
 # --- Display Dashboard with color highlights ---
 def highlight_status(val):
