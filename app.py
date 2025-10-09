@@ -265,7 +265,8 @@ else:
     critical_count = safe_count = 0
 
 due_soon_count = sum(df['Status'].astype(str).str.contains('Due Soon', case=False, na=False))
-avg_service_date = df['Last_Service_Date'].max().strftime("%Y-%m-%d")
+avg_service_date = pd.to_datetime(df['Last Service Date'], errors='coerce').max().strftime("%Y-%m-%d")
+
 
 # --- AI Insights Section ---
 st.markdown("### 🤖 AI Insights")
