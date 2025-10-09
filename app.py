@@ -4,81 +4,72 @@ import streamlit as st
 import time
 
 
+import streamlit as st
+import time
 
-# --- Futuristic Green Splash Screen ---
-def futuristic_green_splash():
-    st.markdown("""
-    <style>
-    .splash {
+# --- MODERN SPLASH SCREEN ---
+splash_html = """
+    <div id="splash" style="
         position: fixed;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        background: linear-gradient(135deg, #a8e6a2, #57c556, #3b8d3b);
+        background: radial-gradient(circle at center, #e8f5e9, #a5d6a7);
         display: flex; flex-direction: column;
-        justify-content: center; align-items: center;
-        color: #FFFFFF;
-        font-family: 'Courier New', monospace;
+        align-items: center; justify-content: center;
         z-index: 9999;
-        animation: fadeOut 2s ease-in-out 6s forwards;
-    }
-
-    @keyframes fadeOut {
-        to { opacity: 0; visibility: hidden; }
-    }
-
-    .glow-logo {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background-image: url("https://i.postimg.cc/XX98G79w/logo.jpg");
-        background-size: cover;
-        background-position: center;
-        box-shadow: 0 0 40px #00FF00, 0 0 80px #00FF00 inset;
-        animation: pulse 1.5s infinite alternate;
-    }
-
-    @keyframes pulse {
-        from { box-shadow: 0 0 25px #00FF00; }
-        to { box-shadow: 0 0 60px #00FF00, 0 0 120px #00FF00 inset; }
-    }
-
-    .boot-text {
-        margin-top: 20px;
-        text-align: center;
-        font-size: 18px;
-        color: #FFFFFF;
-        opacity: 0;
-        animation: appear 1s forwards;
-    }
-
-    .boot-text:nth-of-type(1) { animation-delay: 1s; }
-    .boot-text:nth-of-type(2) { animation-delay: 2s; }
-    .boot-text:nth-of-type(3) { animation-delay: 3s; }
-
-    @keyframes appear { to { opacity: 1; } }
-
-    .fade-in {
-        animation: fadeIn 1.5s ease-in;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    </style>
-
-    <div class="splash">
-        <div class="glow-logo"></div>
-        <div class="boot-text">Initializing Swastik Smart Systems...</div>
-        <div class="boot-text">Activating Predictive Engine...</div>
-        <div class="boot-text">Loading Dashboard...</div>
+        animation: fadeOut 1s ease-in-out 3.5s forwards;
+    ">
+        <img src="https://i.postimg.cc/XX98G79w/logo.jpg"
+             style="width: 180px; height: 180px; border-radius: 50%;
+                    animation: spin 3s ease-in-out infinite alternate;
+                    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+                    margin-bottom: 20px;">
+        <h1 style="font-family: 'Poppins', sans-serif; color: #1b5e20;">
+            Swastik Smart Maintenance
+        </h1>
+        <p style="color: #2e7d32;">Loading your AI dashboard...</p>
+        <div class="loader"></div>
     </div>
-    """, unsafe_allow_html=True)
 
-    time.sleep(6)  # splash duration
+    <style>
+        @keyframes spin {
+            from { transform: rotate(-10deg) scale(1); }
+            to { transform: rotate(10deg) scale(1.05); }
+        }
 
-# --- Run Splash ---
-futuristic_green_splash()
+        .loader {
+            width: 70px; height: 4px;
+            background: #c8e6c9;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader::before {
+            content: "";
+            position: absolute;
+            left: -40px;
+            width: 40px; height: 100%;
+            background: #2e7d32;
+            animation: load 1s linear infinite;
+        }
+
+        @keyframes load {
+            0% { left: -40px; }
+            100% { left: 70px; }
+        }
+
+        @keyframes fadeOut {
+            from {opacity: 1;}
+            to {opacity: 0; visibility: hidden;}
+        }
+    </style>
+"""
+
+st.markdown(splash_html, unsafe_allow_html=True)
+time.sleep(4)
+# --- END SPLASH SCREEN ---
+
 
 # --- Dashboard (with fade-in effect) ---
 st.markdown('<div class="fade-in">', unsafe_allow_html=True)
