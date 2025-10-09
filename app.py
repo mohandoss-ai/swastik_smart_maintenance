@@ -242,12 +242,24 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 
-# --- AI Summary Section ---
+# --- AI Insights Section ---
 st.markdown("### 🤖 AI Insights")
-import matplotlib.pyplot as plt
-import numpy as np
 
-st.markdown("### 📊 AI Predicted Maintenance Timeline (Upgraded Chart)")
+# Analyze equipment status
+critical_count = sum(df['Issue_Flag'] == 1)
+safe_count = sum(df['Issue_Flag'] == 0)
+due_soon_count = sum(df['Status'].str.contains('Due Soon'))
+
+avg_service_date = df['Last_Service_Date'].max().strftime("%Y-%m-%d")
+
+insight_text = f"""
+- **🛠️ Critical Equipment:** {critical_count}
+- **⚠️ Due Soon Equipment:** {due_soon_count}
+- **✅ Safe Equipment:** {safe_count}
+- **📅 Next Predicted Maintenance by:** {avg_service_date}
+"""
+
+st.info(insight_text)
 
 # Sort by next service date
 df_sorted = df.sort_values("Predicted Next Service")
