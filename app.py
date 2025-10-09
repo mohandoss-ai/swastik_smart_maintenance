@@ -12,9 +12,7 @@ st.markdown("---")
 
 # --- App Header with Logo ---
 st.image("swastik_logo.png", width=120)
-st.title("🚧 Swastik Smart Maintenance System")
-st.markdown("Empowering service teams with AI-driven maintenance insights.")
-st.markdown("---")
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
