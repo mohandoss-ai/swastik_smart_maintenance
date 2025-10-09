@@ -81,6 +81,27 @@ def futuristic_splash():
 
 # --- Run Splash ---
 futuristic_splash()
+
+
+# --- Dashboard (with fade-in effect) ---
+st.markdown('<div class="fade-in">', unsafe_allow_html=True)
+st.title("🏗️ Swastik Smart Maintenance Dashboard")
+st.markdown("""
+Welcome to **Swastik Smart Maintenance** —  
+Your intelligent predictive maintenance system powered by AI ⚙️  
+""")
+
+st.image("https://i.postimg.cc/XX98G79w/logo.jpg", width=180)
+
+st.markdown("""
+### 💡 Quick Actions
+- 📊 View Equipment Analytics  
+- 🧠 Check AI Maintenance Predictions  
+- ⚙️ Manage Equipment Status  
+- 📅 Upcoming Service Schedules  
+""")
+
+st.markdown("</div>", unsafe_allow_html=True)
 # --- FUTURISTIC UI STYLING ---
 def set_futuristic_style():
     st.markdown("""
@@ -150,26 +171,6 @@ def set_futuristic_style():
 
 # Call this style function at the top of your dashboard
 set_futuristic_style()
-
-# --- Dashboard (with fade-in effect) ---
-st.markdown('<div class="fade-in">', unsafe_allow_html=True)
-st.title("🏗️ Swastik Smart Maintenance Dashboard")
-st.markdown("""
-Welcome to **Swastik Smart Maintenance** —  
-Your intelligent predictive maintenance system powered by AI ⚙️  
-""")
-
-st.image("https://i.postimg.cc/XX98G79w/logo.jpg", width=180)
-
-st.markdown("""
-### 💡 Quick Actions
-- 📊 View Equipment Analytics  
-- 🧠 Check AI Maintenance Predictions  
-- ⚙️ Manage Equipment Status  
-- 📅 Upcoming Service Schedules  
-""")
-
-st.markdown("</div>", unsafe_allow_html=True)
 
 
 import streamlit as st
