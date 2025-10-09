@@ -197,6 +197,7 @@ data = {
 }
 
 df = pd.DataFrame(data)
+st.write("🧾 Columns in dataset:", list(df.columns))
 
 
 # --- Modern AI Predicted Maintenance Chart ---
@@ -277,7 +278,6 @@ st.info(f"🗓️ Latest Recorded Service Date: **{avg_service_date}**")
 
 
 
-st.write("🧾 Columns in dataset:", list(df.columns))
 
 
 # --- AI Insights Section ---
