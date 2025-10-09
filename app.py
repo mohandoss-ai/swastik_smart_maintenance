@@ -72,4 +72,20 @@ if not high_risk.empty:
     st.table(high_risk[['Equipment_ID', 'Equipment_Type', 'Maintenance_Risk']])
 else:
     st.success("✅ All equipment is in good condition for now.")
+# -----------------------------------------------------------
+# 🗓️ Smart Maintenance Scheduler
+# -----------------------------------------------------------
+
+st.write("### 🗓️ Maintenance Scheduler")
+
+equipment_list = df['Equipment_ID'].tolist()
+selected_equipment = st.selectbox("Select Equipment for Scheduling", equipment_list)
+
+selected_date = st.date_input("Select Next Service Date")
+
+if st.button("Schedule Maintenance"):
+    st.success(f"✅ Maintenance for **{selected_equipment}** scheduled on **{selected_date}**.")
+    st.balloons()
+
+st.write("You can use this tool to plan preventive maintenance based on AI risk predictions.")
 
