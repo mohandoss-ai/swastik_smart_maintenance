@@ -80,11 +80,12 @@ def futuristic_green_splash():
             <div class="boot-text">Loading Dashboard...</div>
 
 
-# --- Dashboard (with fade-in effect) ---
+ --- Dashboard (with fade-in effect) ---
+
 st.markdown('<div class="fade-in">', unsafe_allow_html=True)
 st.title("🏗️ Swastik Smart Maintenance Dashboard")
-st.markdown("""
-Welcome to **Swastik Smart Maintenance** —  
+st.markdown(
+"""Welcome to **Swastik Smart Maintenance** \u2014 
 Your intelligent predictive maintenance system powered by AI ⚙️  
 """)
 
