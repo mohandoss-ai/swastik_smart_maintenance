@@ -245,37 +245,6 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
-# Check column names safely
-st.write("Available columns:", list(df.columns))
-
-# Try different possible column names
-issue_col = None
-for col in df.columns:
-    if 'Issue' in col and 'Flag' in col:
-        issue_col = col
-        break
-
-if issue_col:
-    critical_count = sum(df[issue_col] == 1)
-    safe_count = sum(df[issue_col] == 0)
-else:
-    critical_count = safe_count = 0
-
-due_soon_count = sum(df['Status'].astype(str).str.contains('Due Soon', case=False, na=False))
-# --- Safe handling for Last Service Date ---
-possible_cols = [col for col in df.columns if "service" in col.lower() and "date" in col.lower()]
-if possible_cols:
-    last_service_col = possible_cols[0]
-    avg_service_date = pd.to_datetime(df[last_service_col], errors='coerce').max()
-    if pd.notnull(avg_service_date):
-        avg_service_date = avg_service_date.strftime("%Y-%m-%d")
-    else:
-        avg_service_date = "No valid date found"
-else:
-    avg_service_date = "Column not found"
-
-st.info(f"🗓️ Latest Recorded Service Date: **{avg_service_date}**")
-
 
 
 
