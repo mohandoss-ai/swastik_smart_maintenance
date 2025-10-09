@@ -242,9 +242,6 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 
-# --- AI Insights Section ---
-st.markdown("### 🤖 AI Insights")
-
 
 # Check column names safely
 st.write("Available columns:", list(df.columns))
