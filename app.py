@@ -245,11 +245,26 @@ st.plotly_chart(fig, use_container_width=True)
 # --- AI Insights Section ---
 st.markdown("### 🤖 AI Insights")
 
-# Analyze equipment status
-critical_count = sum(df['Issue_Flag'] == 1)
-safe_count = sum(df['Issue_Flag'] == 0)
-due_soon_count = sum(df['Status'].str.contains('Due Soon'))
+# --- AI Insights Section ---
+st.markdown("### 🤖 AI Insights")
 
+# Check column names safely
+st.write("Available columns:", list(df.columns))
+
+# Try different possible column names
+issue_col = None
+for col in df.columns:
+    if 'Issue' in col and 'Flag' in col:
+        issue_col = col
+        break
+
+if issue_col:
+    critical_count = sum(df[issue_col] == 1)
+    safe_count = sum(df[issue_col] == 0)
+else:
+    critical_count = safe_count = 0
+
+due_soon_count = sum(df['Status'].astype(str).str.contains('Due Soon', case=False, na=False))
 avg_service_date = df['Last_Service_Date'].max().strftime("%Y-%m-%d")
 
 insight_text = f"""
@@ -260,6 +275,7 @@ insight_text = f"""
 """
 
 st.info(insight_text)
+
 
 # Sort by next service date
 df_sorted = df.sort_values("Predicted Next Service")
