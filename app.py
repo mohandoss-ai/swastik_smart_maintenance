@@ -267,6 +267,34 @@ else:
 due_soon_count = sum(df['Status'].astype(str).str.contains('Due Soon', case=False, na=False))
 avg_service_date = df['Last_Service_Date'].max().strftime("%Y-%m-%d")
 
+# --- AI Insights Section ---
+st.markdown("### 🤖 AI Insights")
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Show available columns (for debugging only once)
+if st.checkbox("Show column names for debugging"):
+    st.write(list(df.columns))
+
+# Try to detect issue flag column automatically
+issue_col = next((col for col in df.columns if 'issue' in col.lower() and 'flag' in col.lower()), None)
+status_col = next((col for col in df.columns if 'status' in col.lower()), None)
+date_col = next((col for col in df.columns if 'service' in col.lower() and 'date' in col.lower()), None)
+
+# Compute values safely
+critical_count = sum(df[issue_col] == 1) if issue_col else 0
+safe_count = sum(df[issue_col] == 0) if issue_col else 0
+due_soon_count = sum(df[status_col].astype(str).str.contains('Due Soon', case=False, na=False)) if status_col else 0
+
+if date_col:
+    # Convert to datetime just in case
+    df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
+    avg_service_date = df[date_col].max().strftime("%Y-%m-%d")
+else:
+    avg_service_date = "N/A"
+
+# Display summary
 insight_text = f"""
 - **🛠️ Critical Equipment:** {critical_count}
 - **⚠️ Due Soon Equipment:** {due_soon_count}
