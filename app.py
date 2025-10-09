@@ -4,93 +4,90 @@ import streamlit as st
 import time
 
 
-import streamlit as st
-import time
-
-import streamlit as st
-import time
 
 # --- Futuristic Green Splash Screen ---
 def futuristic_green_splash():
     st.markdown("""
-        <style>
-        .splash {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, #a8e6a2, #57c556, #3b8d3b); /* pleasant green gradient */
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            color: #FFFFFF;
-            font-family: 'Courier New', monospace;
-            z-index: 9999;
-            animation: fadeOut 2s ease-in-out 6s forwards;
-        }
+    <style>
+    .splash {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: linear-gradient(135deg, #a8e6a2, #57c556, #3b8d3b);
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        color: #FFFFFF;
+        font-family: 'Courier New', monospace;
+        z-index: 9999;
+        animation: fadeOut 2s ease-in-out 6s forwards;
+    }
 
-        @keyframes fadeOut {
-            to { opacity: 0; visibility: hidden; }
-        }
+    @keyframes fadeOut {
+        to { opacity: 0; visibility: hidden; }
+    }
 
-        .glow-logo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background-image: url("https://i.postimg.cc/XX98G79w/logo.jpg");
-            background-size: cover;
-            background-position: center;
-            box-shadow: 0 0 40px #00FF00, 0 0 80px #00FF00 inset; /* green glow */
-            animation: pulse 1.5s infinite alternate;
-        }
+    .glow-logo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-image: url("https://i.postimg.cc/XX98G79w/logo.jpg");
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 0 40px #00FF00, 0 0 80px #00FF00 inset;
+        animation: pulse 1.5s infinite alternate;
+    }
 
-        @keyframes pulse {
-            from { box-shadow: 0 0 25px #00FF00; }
-            to { box-shadow: 0 0 60px #00FF00, 0 0 120px #00FF00 inset; }
-        }
+    @keyframes pulse {
+        from { box-shadow: 0 0 25px #00FF00; }
+        to { box-shadow: 0 0 60px #00FF00, 0 0 120px #00FF00 inset; }
+    }
 
-        .boot-text {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 18px;
-            color: #FFFFFF; /* white text */
-            opacity: 0;
-            animation: appear 1s forwards;
-        }
+    .boot-text {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        color: #FFFFFF;
+        opacity: 0;
+        animation: appear 1s forwards;
+    }
 
-        .boot-text:nth-child(2) { animation-delay: 1s; }
-        .boot-text:nth-child(3) { animation-delay: 2s; }
-        .boot-text:nth-child(4) { animation-delay: 3s; }
+    .boot-text:nth-of-type(1) { animation-delay: 1s; }
+    .boot-text:nth-of-type(2) { animation-delay: 2s; }
+    .boot-text:nth-of-type(3) { animation-delay: 3s; }
 
-        @keyframes appear { to { opacity: 1; } }
+    @keyframes appear { to { opacity: 1; } }
 
-        /* FADE-IN DASHBOARD AFTER SPLASH */
-        .fade-in {
-            animation: fadeIn 1.5s ease-in;
-        }
+    .fade-in {
+        animation: fadeIn 1.5s ease-in;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        </style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    </style>
 
-        <div class="splash">
-            <div class="glow-logo"></div>
-            <div class="boot-text">Initializing Swastik Smart Systems...</div>
-            <div class="boot-text">Activating Predictive Engine...</div>
-            <div class="boot-text">Loading Dashboard...</div>
+    <div class="splash">
+        <div class="glow-logo"></div>
+        <div class="boot-text">Initializing Swastik Smart Systems...</div>
+        <div class="boot-text">Activating Predictive Engine...</div>
+        <div class="boot-text">Loading Dashboard...</div>
+    </div>
+    """, unsafe_allow_html=True)
 
+    time.sleep(6)  # splash duration
 
- --- Dashboard (with fade-in effect) ---
+# --- Run Splash ---
+futuristic_green_splash()
 
+# --- Dashboard (with fade-in effect) ---
 st.markdown('<div class="fade-in">', unsafe_allow_html=True)
 st.title("🏗️ Swastik Smart Maintenance Dashboard")
-st.markdown(
-"""Welcome to **Swastik Smart Maintenance** \u2014 
-Your intelligent predictive maintenance system powered by AI ⚙️  
+st.markdown("""
+Welcome to **Swastik Smart Maintenance** -
+Your intelligent predictive maintenance system powered by AI ⚙️
 """)
-
 st.image("https://i.postimg.cc/XX98G79w/logo.jpg", width=180)
-
 st.markdown("""
 ### 💡 Quick Actions
 - 📊 View Equipment Analytics  
@@ -98,8 +95,8 @@ st.markdown("""
 - ⚙️ Manage Equipment Status  
 - 📅 Upcoming Service Schedules  
 """)
-
 st.markdown("</div>", unsafe_allow_html=True)
+
 
 import streamlit as st
 import pandas as pd
