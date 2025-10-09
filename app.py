@@ -116,4 +116,41 @@ if st.button("🚀 Predict Maintenance"):
             st.warning(f"⚠️ Maintenance likely needed in {random.randint(10,20)} days. Schedule inspection soon.")
         else:
             st.error(f"🚨 Immediate attention required! High risk of failure within {random.randint(1,7)} days.")
+# --- Maintenance Insights Dashboard ---
+import pandas as pd
+import matplotlib.pyplot as plt
+
+st.header("📊 Maintenance Insights Dashboard")
+
+# Create sample data (for demo)
+data = {
+    "Machine": ["Crane A", "Crane B", "Crane C", "Crane D"],
+    "Status": ["Healthy", "Needs Attention", "Critical", "Healthy"],
+    "Run Hours": [1200, 2100, 3400, 1500],
+    "Next Service (Days)": [25, 12, 5, 30]
+}
+
+df = pd.DataFrame(data)
+
+# Show data in a nice table
+st.dataframe(df)
+
+# Count statuses for visualization
+status_counts = df["Status"].value_counts()
+
+# Create a bar chart
+fig, ax = plt.subplots()
+ax.bar(status_counts.index, status_counts.values)
+ax.set_title("Equipment Health Summary")
+ax.set_xlabel("Status")
+ax.set_ylabel("Number of Machines")
+
+st.pyplot(fig)
+
+# Summary Text
+healthy = status_counts.get("Healthy", 0)
+attention = status_counts.get("Needs Attention", 0)
+critical = status_counts.get("Critical", 0)
+
+st.info(f"✅ {healthy} Machines Healthy | ⚠️ {attention} Need Attention | 🚨 {critical} Critical Condition")
 
