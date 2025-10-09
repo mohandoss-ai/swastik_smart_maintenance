@@ -3,24 +3,61 @@ from PIL import Image
 import streamlit as st
 import time
 
-# --- SPLASH SCREEN (TOP + AUTO HIDE) ---
+import streamlit as st
+import time
+
+# --- MODERN SPLASH SCREEN ---
 splash_html = """
     <div id="splash" style="
         position: fixed;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        background-color: #f4f6fa;
+        background: radial-gradient(circle at center, #e8f5e9, #a5d6a7);
         display: flex; flex-direction: column;
         align-items: center; justify-content: center;
         z-index: 9999;
-        animation: fadeOut 1s ease-in-out 3s forwards;
+        animation: fadeOut 1s ease-in-out 3.5s forwards;
     ">
-        <img src="https://i.postimg.cc/XX98G79w/logo.jpg" width="140" style="margin-bottom: 20px;">
-        <h1 style="font-family: 'Poppins', sans-serif; color: #222;">🚧 Swastik Smart Maintenance 🚧</h1>
-        <p style="color: #555;">AI-Powered Predictive Maintenance Dashboard</p>
+        <img src="https://i.postimg.cc/XX98G79w/logo.jpg"
+             style="width: 180px; height: 180px; border-radius: 50%;
+                    animation: spin 3s ease-in-out infinite alternate;
+                    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+                    margin-bottom: 20px;">
+        <h1 style="font-family: 'Poppins', sans-serif; color: #1b5e20;">
+            Swastik Smart Maintenance
+        </h1>
+        <p style="color: #2e7d32;">Loading your AI dashboard...</p>
+        <div class="loader"></div>
     </div>
 
     <style>
+        @keyframes spin {
+            from { transform: rotate(-10deg) scale(1); }
+            to { transform: rotate(10deg) scale(1.05); }
+        }
+
+        .loader {
+            width: 70px; height: 4px;
+            background: #c8e6c9;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader::before {
+            content: "";
+            position: absolute;
+            left: -40px;
+            width: 40px; height: 100%;
+            background: #2e7d32;
+            animation: load 1s linear infinite;
+        }
+
+        @keyframes load {
+            0% { left: -40px; }
+            100% { left: 70px; }
+        }
+
         @keyframes fadeOut {
             from {opacity: 1;}
             to {opacity: 0; visibility: hidden;}
@@ -31,6 +68,7 @@ splash_html = """
 st.markdown(splash_html, unsafe_allow_html=True)
 time.sleep(4)
 # --- END SPLASH SCREEN ---
+
 
 
 
