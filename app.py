@@ -360,7 +360,7 @@ fig = px.scatter(
     df,
     x="Usage Hours",
     y="Predicted Next Service",
-    color="Risk Level",
+    color="Status",
     size="Usage Hours",
     hover_name="Equipment Name",
     title="🤖 AI-Driven Maintenance Prediction",
