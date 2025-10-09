@@ -1,0 +1,11 @@
+Equipment_ID,Equipment_Type,Hours_Used,Last_Service_Date,Machine_Age,Issue_Flag
+CRN101,Boom Lift,480,2025-09-10,3,0
+CRN102,Scissor Lift,300,2025-09-15,2,1
+CRN103,Mobile Crane,650,2025-09-02,4,0
+CRN104,Truck Crane,500,2025-08-25,5,1
+CRN105,Tower Crane,700,2025-09-05,6,0
+CRN106,Hydraulic Lift,420,2025-09-12,3,0
+CRN107,Mini Crane,250,2025-09-22,1,0
+CRN108,Boom Lift,550,2025-09-07,4,1
+CRN109,Scissor Lift,310,2025-09-18,2,0
+CRN110,Mobile Crane,480,2025-09-10,3,0
