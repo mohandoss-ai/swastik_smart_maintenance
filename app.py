@@ -101,59 +101,58 @@ st.markdown("""
 - 📅 Upcoming Service Schedules  
 """)
 
-st.markdown("</div>", unsafe_allow_html=True)
 def set_futuristic_style():
     st.markdown("""
         <style>
         /* Background gradient */
         .stApp {
-            background: linear-gradient(135deg, #0a0f24, #1b2735, #090a0f);
-            color: #F0F0F0; /* Brighter text */
+            background: linear-gradient(135deg, #004d26, #007a33, #00cc66);
+            color: #FFFFFF;
             font-family: 'Poppins', sans-serif;
         }
 
         /* Headings */
         h1, h2, h3, h4 {
-            color: #00FFFF;
-            text-shadow: 0px 0px 12px rgba(0, 255, 255, 0.6);
+            color: #FFFFFF;
+            text-shadow: 0px 0px 12px rgba(0, 255, 102, 0.7);
         }
 
         /* Paragraphs and small text */
         p, div, span {
-            color: #EAEAEA !important; /* Ensure readability */
+            color: #F0FFF0 !important;
         }
 
         /* Info cards */
         .stMetric, .stMarkdown, .stDataFrame {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(8px);
             border-radius: 15px;
             padding: 15px;
-            color: #F5F5F5;
+            color: #E0FFE0;
         }
 
         /* Buttons */
         div.stButton > button {
-            background-color: #00FFFF;
-            color: #0A0F24;
+            background-color: #FFFFFF;
+            color: #007a33;
             border-radius: 8px;
             font-weight: 600;
-            box-shadow: 0px 0px 20px #00FFFF80;
+            box-shadow: 0px 0px 20px #00FF6680;
             transition: 0.3s;
         }
 
         div.stButton > button:hover {
-            background-color: #14FFEC;
-            color: black;
+            background-color: #E0FFE0;
+            color: #004d26;
             transform: scale(1.05);
         }
 
         /* Sidebar */
         section[data-testid="stSidebar"] {
-            background: rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.15);
             backdrop-filter: blur(12px);
-            border-right: 1px solid rgba(255,255,255,0.2);
-            color: #E0E0E0;
+            border-right: 1px solid rgba(255,255,255,0.25);
+            color: #FFFFFF;
         }
 
         /* Animations */
