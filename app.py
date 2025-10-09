@@ -6,82 +6,62 @@ import time
 import streamlit as st
 import time
 
-# --- FUTURISTIC GREEN THEME ---
-def set_green_style():
+# --- SPLASH SCREEN WITH GREEN THEME ---
+import streamlit as st
+import time
+
+def splash_screen():
     st.markdown("""
         <style>
-        /* Background color */
-        .stApp {
+        /* Full-screen green gradient background */
+        .splash-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: linear-gradient(135deg, #0f4d0f, #1a6f1a, #0a3a0a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
             color: #FFFFFF;
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Header styling */
-        h1, h2, h3, h4 {
+        /* Logo glow / pulse animation */
+        .logo {
+            font-size: 60px;
+            font-weight: 800;
+            color: #00FF00;
+            text-shadow: 0 0 20px #00FF00, 0 0 40px #32FF32, 0 0 60px #00FF00AA;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px #00FF00, 0 0 20px #32FF32; transform: scale(1); }
+            100% { text-shadow: 0 0 30px #00FF00, 0 0 60px #32FF32; transform: scale(1.05); }
+        }
+
+        /* Boot-up text animation */
+        .boot-text {
+            margin-top: 20px;
+            font-size: 24px;
             color: #FFFFFF;
-            text-shadow: 0px 0px 10px #00FF00AA;
+            text-shadow: 0 0 10px #00FF00;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
 
-        /* Info cards */
-        .stMetric, .stMarkdown, .stDataFrame {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.2);
-        }
-
-        /* Buttons */
-        div.stButton > button {
-            background-color: #00FF00;
-            color: #FFFFFF;
-            border-radius: 8px;
-            font-weight: 600;
-            box-shadow: 0px 0px 20px #00FF0080;
-            transition: 0.3s;
-        }
-
-        div.stButton > button:hover {
-            background-color: #32FF32;
-            color: black;
-            transform: scale(1.05);
-        }
-
-        /* Sidebar */
-        section[data-testid="stSidebar"] {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(12px);
-            border-right: 1px solid rgba(255,255,255,0.2);
-        }
-
-        /* Animations */
         @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        div[data-testid="stHorizontalBlock"] {
-            animation: fadeIn 1s ease-in-out;
+            to { opacity: 1; }
         }
         </style>
-    """, unsafe_allow_html=True)
 
-set_green_style()
+        <div class="splash-container">
+            <div class="logo">⚡ Swastik Smart Systems</div>
+            <div id="boot1" class="boot-text">Initializing Swastik Smart Systems…</div>
+            <div id="boot2" class="boot-text">Activating Predi
 
-
-# --- Dashboard (with fade-in effect) ---
-st.markdown('<div class="fade-in">', unsafe_allow_html=True)
-st.title("🏗️ Swastik Smart Maintenance Dashboard")
-st.markdown("""
-Welcome to **Swastik Smart Maintenance** —  
-Your intelligent predictive maintenance system powered by AI ⚙️  
-""")
-
-st.image("https://i.postimg.cc/XX98G79w/logo.jpg", width=180)
-
-st.markdown("""
-### 💡 Quick Actions
 - 📊 View Equipment Analytics  
 - 🧠 Check AI Maintenance Predictions  
 - ⚙️ Manage Equipment Status  
