@@ -212,4 +212,20 @@ st.info(
     - Remaining equipment is in **Safe** operating condition.
     """
 )
+# --- Predictive Maintenance Visualization ---
+st.markdown("### 📅 Predicted Next Service Timeline")
+
+# Convert date strings to datetime for plotting
+df["Predicted Next Service"] = pd.to_datetime(df["Predicted Next Service"])
+
+# Sort by date
+df_sorted = df.sort_values("Predicted Next Service")
+
+# Plot
+fig, ax = plt.subplots()
+ax.barh(df_sorted["Equipment Name"], df_sorted["Usage Hours"])
+ax.set_xlabel("Usage Hours (before next service)")
+ax.set_ylabel("Equipment")
+ax.set_title("Upcoming Maintenance Schedule (Predicted by AI)")
+st.pyplot(fig)
 
