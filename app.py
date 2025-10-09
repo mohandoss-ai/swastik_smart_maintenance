@@ -1,3 +1,28 @@
+import time
+
+# --- SPLASH SCREEN SECTION ---
+splash_html = f"""
+    <div id="splash" style="
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        height: 100vh; background-color: #f4f6fa; animation: fadeOut 1s ease-in-out 3s forwards;">
+        <img src="https://i.postimg.cc/XX98G79w/logo.jpg" width="120" style="margin-bottom: 20px;">
+        <h1 style="font-family: 'Poppins', sans-serif; color: #222;">🚧 Swastik Smart Maintenance 🚧</h1>
+        <p style="color: #555;">AI-Powered Predictive Maintenance Dashboard</p>
+    </div>
+
+    <style>
+        @keyframes fadeOut {{
+            from {{opacity: 1;}}
+            to {{opacity: 0; display: none; visibility: hidden;}}
+        }}
+    </style>
+"""
+
+st.markdown(splash_html, unsafe_allow_html=True)
+time.sleep(4)
+st.empty()
+# --- END SPLASH SCREEN SECTION ---
+
 import streamlit as st
 from PIL import Image
 
