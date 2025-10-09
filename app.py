@@ -184,6 +184,14 @@ data = {
 }
 
 df = pd.DataFrame(data)
+# --- Download Data Button ---
+csv = df.to_csv(index=False).encode('utf-8')
+st.download_button(
+    label="📥 Download Equipment Data (CSV)",
+    data=csv,
+    file_name="equipment_maintenance_data.csv",
+    mime="text/csv"
+)
 
 # --- Display Dashboard with color highlights ---
 def highlight_status(val):
