@@ -8,129 +8,71 @@ import time
 import streamlit as st
 import time
 
-def splash_screen():
-    st.markdown("""
-        <style>
-        /* Full-screen green gradient background */
-        .splash-container {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, #0f4d0f, #1a6f1a, #0a3a0a);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 9999;
-            color: #FFFFFF;
-            font-family: 'Poppins', sans-serif;
+import streamlit as st
+import time
+
+# --- MODERN SPLASH SCREEN ---
+splash_html = """
+    <div id="splash" style="
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: radial-gradient(circle at center, #e8f5e9, #a5d6a7);
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        z-index: 9999;
+        animation: fadeOut 1s ease-in-out 3.5s forwards;
+    ">
+        <img src="https://i.postimg.cc/XX98G79w/logo.jpg"
+             style="width: 180px; height: 180px; border-radius: 50%;
+                    animation: spin 3s ease-in-out infinite alternate;
+                    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+                    margin-bottom: 20px;">
+        <h1 style="font-family: 'Poppins', sans-serif; color: #1b5e20;">
+            Swastik Smart Maintenance
+        </h1>
+        <p style="color: #2e7d32;">Loading your AI dashboard...</p>
+        <div class="loader"></div>
+    </div>
+
+    <style>
+        @keyframes spin {
+            from { transform: rotate(-10deg) scale(1); }
+            to { transform: rotate(10deg) scale(1.05); }
         }
 
-        /* Logo glow / pulse animation */
-        .logo {
-            font-size: 60px;
-            font-weight: 800;
-            color: #00FF00;
-            text-shadow: 0 0 20px #00FF00, 0 0 40px #32FF32, 0 0 60px #00FF00AA;
-            animation: pulse 1.5s infinite alternate;
+        .loader {
+            width: 70px; height: 4px;
+            background: #c8e6c9;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
         }
 
-        @keyframes pulse {
-            0% { text-shadow: 0 0 10px #00FF00, 0 0 20px #32FF32; transform: scale(1); }
-            100% { text-shadow: 0 0 30px #00FF00, 0 0 60px #32FF32; transform: scale(1.05); }
+        .loader::before {
+            content: "";
+            position: absolute;
+            left: -40px;
+            width: 40px; height: 100%;
+            background: #2e7d32;
+            animation: load 1s linear infinite;
         }
 
-        /* Boot-up text animation */
-        .boot-text {
-            margin-top: 20px;
-            font-size: 24px;
-            color: #FFFFFF;
-            text-shadow: 0 0 10px #00FF00;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
+        @keyframes load {
+            0% { left: -40px; }
+            100% { left: 70px; }
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        @keyframes fadeOut {
+            from {opacity: 1;}
+            to {opacity: 0; visibility: hidden;}
         }
-        </style>
+    </style>
+"""
 
-        <div class="splash-container">
-            <div class="logo">⚡ Swastik Smart Systems</div>
-            <div id="boot1" class="boot-text">Initializing Swastik Smart Systems…</div>
-            <div id="boot2" class="boot-text">Activating Predi
-
-- 📊 View Equipment Analytics  
-- 🧠 Check AI Maintenance Predictions  
-- ⚙️ Manage Equipment Status  
-- 📅 Upcoming Service Schedules  
-""")
-
-def set_futuristic_style():
-    st.markdown("""
-        <style>
-        /* Background gradient */
-        .stApp {
-            background: linear-gradient(135deg, #004d26, #007a33, #00cc66);
-            color: #FFFFFF;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* Headings */
-        h1, h2, h3, h4 {
-            color: #FFFFFF;
-            text-shadow: 0px 0px 12px rgba(0, 255, 102, 0.7);
-        }
-
-        /* Paragraphs and small text */
-        p, div, span {
-            color: #F0FFF0 !important;
-        }
-
-        /* Info cards */
-        .stMetric, .stMarkdown, .stDataFrame {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(8px);
-            border-radius: 15px;
-            padding: 15px;
-            color: #E0FFE0;
-        }
-
-        /* Buttons */
-        div.stButton > button {
-            background-color: #FFFFFF;
-            color: #007a33;
-            border-radius: 8px;
-            font-weight: 600;
-            box-shadow: 0px 0px 20px #00FF6680;
-            transition: 0.3s;
-        }
-
-        div.stButton > button:hover {
-            background-color: #E0FFE0;
-            color: #004d26;
-            transform: scale(1.05);
-        }
-
-        /* Sidebar */
-        section[data-testid="stSidebar"] {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(12px);
-            border-right: 1px solid rgba(255,255,255,0.25);
-            color: #FFFFFF;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        div[data-testid="stHorizontalBlock"] {
-            animation: fadeIn 1s ease-in-out;
-        }
-        </style>
-    """, unsafe_allow_html=True)
+st.markdown(splash_html, unsafe_allow_html=True)
+time.sleep(4)
+# --- END SPLASH SCREEN ---
 
 
 import streamlit as st
