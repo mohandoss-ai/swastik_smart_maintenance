@@ -1,1 +1,1 @@
-phthon
+python
