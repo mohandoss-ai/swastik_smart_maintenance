@@ -239,17 +239,28 @@ df["Risk Color"] = df["Risk Level"].map({
     "High": "red"
 })
 
+# Add Risk Level for visualization (based on Status)
+df["Risk Level"] = df["Status"].map({
+    "✅ Safe": "Low",
+    "⚠️ Due Soon": "Medium",
+    "❌ Critical": "High"
+}).fillna("Low")
+
+# Create a modern scatter chart
+import plotly.express as px
+
 fig = px.scatter(
     df,
-    x="Equipment Name",
+    x="Usage Hours",
     y="Predicted Next Service",
-    size="Usage Hours",
     color="Risk Level",
-    color_discrete_map={"Low": "green", "Medium": "orange", "High": "red"},
-    hover_data=["Condition", "Status", "Usage Hours"],
-    size_max=50,
-    title="AI-Driven Maintenance Prediction",
+    size="Usage Hours",
+    hover_name="Equipment Name",
+    title="🤖 AI-Driven Maintenance Prediction",
 )
+
+st.plotly_chart(fig, use_container_width=True)
+
 
 fig.update_layout(
     plot_bgcolor="#f8f9fa",
