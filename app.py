@@ -186,6 +186,7 @@ data = {
 df = pd.DataFrame(data)
 # --- Download Data Button ---
 csv = df.to_csv(index=False).encode('utf-8')
+st.markdown("### 📥 Download Equipment Data")
 st.download_button(
     label="📥 Download Equipment Data (CSV)",
     data=csv,
