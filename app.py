@@ -1,12 +1,6 @@
 import streamlit as st
 
-# --- Page Configuration ---
-st.set_page_config(
-    page_title="Swastik Smart Maintenance",
-    page_icon="⚙️",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+
 # --- PAGE HEADER ---
 st.markdown("""
 # 🏗️ Swastik Smart Maintenance Dashboard
