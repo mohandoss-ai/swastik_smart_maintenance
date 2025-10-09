@@ -221,27 +221,47 @@ colors = df_sorted["Status"].map({
     "⚠️ Due Soon": "#ffcc00",   # yellow
     "❌ Critical": "#ff4d4d"    # red
 }).fillna("#999999")
+# --- Predictive Maintenance Visualization (AI Bubble Chart) ---
+st.markdown("### 🤖 Predictive Maintenance Risk Overview")
 
-# Create modern bar chart
-bars = ax.bar(df_sorted["Equipment Name"], df_sorted["Usage Hours"], color=colors)
+import plotly.express as px
 
-# Add labels and formatting
-ax.set_title("Predicted Next Service — AI Insights", fontsize=14, weight='bold')
-ax.set_xlabel("Equipment Name")
-ax.set_ylabel("Usage Hours (Before Next Service)")
-ax.set_xticklabels(df_sorted["Equipment Name"], rotation=30, ha='right')
+# Create a sample predictive dataset
+df["Predicted Next Service"] = pd.date_range("2025-10-10", periods=len(df), freq="10D")
+df["Risk Level"] = df["Condition"].map({
+    "Good": "Low",
+    "Needs Service": "Medium",
+    "Critical": "High"
+})
+df["Risk Color"] = df["Risk Level"].map({
+    "Low": "green",
+    "Medium": "orange",
+    "High": "red"
+})
 
-# Add values on top of bars
-for bar in bars:
-    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 5,
-            int(bar.get_height()), ha='center', va='bottom', fontsize=9)
+fig = px.scatter(
+    df,
+    x="Equipment Name",
+    y="Predicted Next Service",
+    size="Usage Hours",
+    color="Risk Level",
+    color_discrete_map={"Low": "green", "Medium": "orange", "High": "red"},
+    hover_data=["Condition", "Status", "Usage Hours"],
+    size_max=50,
+    title="AI-Driven Maintenance Prediction",
+)
 
-st.pyplot(fig)
+fig.update_layout(
+    plot_bgcolor="#f8f9fa",
+    paper_bgcolor="#f8f9fa",
+    font=dict(color="#333", size=13),
+    title_font=dict(size=18, color="#0d6efd", family="Arial Black"),
+    xaxis_title="Equipment",
+    yaxis_title="Predicted Next Service Date",
+)
 
-# Add mini AI legend
-st.markdown("""
-🟢 **Safe Equipment** — Recently serviced  
-🟡 **Due Soon** — Plan maintenance soon  
-🔴 **Critical** — Immediate service required  
-""")
+st.plotly_chart(fig, use_container_width=True)
+
+
+
 
