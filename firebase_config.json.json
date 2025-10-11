@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "swastik-smart-maintenance",
+  "private_key_id": "a5dcd07eb46e8ddef102b72f8b16929ad4685c8b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDMd6S1ScBw3ABH\nhdQwnJpnoJy5N9LRQPmIGJIABKOcST77bGNInFU7VSc2BGG2dADwVR8mc4qjEhwR\n9umEByLcpq9laDIR2O5hZGLmAWwYe1l2yvHohvBtE71vx9X7MqTAZzKJjuowd3tj\nzsLgWygrlqwGynG9M/UHTYmZBUnmoUHivDsx0zEHWb+XcV9oJ6il5UCGefqa3Ake\ne8dxM2YiMO/jAANu0Ao+lPcyLhx6bwuEL4oWCaJp/ICJiy88g0qjVSsl/Zs1QvQU\ns6VyeoftG0k/wywwbxmberLW52vZAYKt7Caev6RM4j/2NH5a+Iw0NiDtvlMnuV2u\nVeguqGA3AgMBAAECggEABtxQ24BhA6huHfhAmWz3xVhfSdu0qC7M8KMaawO81aaj\nhV4qqqoMNhRyX16gRLX5vhatF+Yylawq4vNs/HAc3Fh/dCCd5Xlo7j2nD96mWN/y\nrYi7uzij4pUR+ykyZd5aJtaPnIv+EahArKWoZkzIuUWx+fxa+qU+qIMShd7mjuV0\n6kU2gNvPIVwJGS2t6JOfIenCouEW1IcmrfbCKspmwGiE9upSuodAEPkb9uMT4Sqy\nr+hp/cREDyG/Ik1eUFWp7pfyAORO0wGbQ36v8+jvmgXE/Yxmckki4C9ZKILDC7Qc\nPCsnsuSSsT3CQ0ktDaFNAFSlkjQISrDGWQQYYP58AQKBgQDtd9QkOKIfCqvjphsC\nXebdDSkmera4mOr1Hw/ckdVPXoGHNY9QEwTcTz9IuFiDdc7ndyGoWQJCXCNAQLOz\nA9ZItCuTWtFLiBLwb1HSEjtSkdkc5SaBvwA3VnD/PEbTl6pDJ+A0PKa8KncG3NgI\n32tuvxccCbP+LZ5QXMDuq3OGNwKBgQDcbIWC4hrWA0uqrHHT3x4FRugLEfb7Cb5p\nqrxYluPno0ozE0VvY3rIZMdPtplSNVY7urxm5dxwEsLAdBcX56cKDa2KMR4kN3C1\n3jL5X+kd9ipsOsjnmS4FY9y5jsMbDaI6QJ3y1+ETOu4iCxt1gVSyKhLOiq25IKG9\n1J2LI6T2AQKBgQC/cJUjxkxcvhuo4SZxGAagOpXsIY3g79arWilNZnwTClteB33L\nzili+rhIBeXFxVnSHKaTs34wxVrd18uHDBbacfWXS+XjAIZUM0pBEtWkUVQ5CTur\n6bFg610ZRxzKREDM9v623haFJ67hZ3T6YjOYCpG01tW2mkxA+SXIw4vUrQKBgEzV\n83BdWtdxTKYQ+JjPdMqIHgkF2R9HFT4GSyNibc1oKUxGknSyq7FBGA0cbLOwbf/i\nJxyDUeUrVQH7NbWaharGe9DpMEWVoc9zxjcRjNRp4/3YPAInblhoqB9yuWYryXoe\n3jAxun6Wkz4AuzCpxZlZezbONqKK0na2r7g5054BAoGBAJgwdR2uvcdxDGrOlQCx\n2uZL3/hjKcqm3om0Xa/+E61nCIs8spym/HsouMkK8+8fB3JGN17c7FyGne+ioo3R\nsEZYIMFzrQS6nOlzJ9ijM2Dd5w2JcEpFVK6azD7lddjNAvDa7US4N7+kU8r+E6mk\nSlNayhKbtKzyvDhSm7LNvdQ1\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@swastik-smart-maintenance.iam.gserviceaccount.com",
+  "client_id": "103090471576828681221",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40swastik-smart-maintenance.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
